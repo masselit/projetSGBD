@@ -4,12 +4,12 @@ public class ByteSGBD extends TypeSGBD<Byte> {
 
 	@Override
 	public Byte getValeur() {
-		return null;
+		return valeur;
 	}
 
 	@Override
 	public void setValeur(Byte valeur) {
-
+		super.valeur = valeur;
 	}
 
 }

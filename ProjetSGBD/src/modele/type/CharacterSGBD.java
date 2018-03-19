@@ -4,12 +4,12 @@ public class CharacterSGBD extends TypeSGBD<Character> {
 
 	@Override
 	public Character getValeur() {
-		return null;
+		return valeur;
 	}
 
 	@Override
 	public void setValeur(Character valeur) {
-
+		super.valeur = valeur;
 	}
 
 }

@@ -4,12 +4,12 @@ public class BooleanSGBD extends TypeSGBD<Boolean> {
 
 	@Override
 	public Boolean getValeur() {
-		return null;
+		return valeur;
 	}
 
 	@Override
 	public void setValeur(Boolean valeur) {
-
+		super.valeur = valeur;
 	}
 
 }

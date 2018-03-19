@@ -4,14 +4,12 @@ public class FloatSGBD extends TypeSGBD<Float> {
 
 	@Override
 	public Float getValeur() {
-		// TODO Auto-generated method stub
-		return null;
+		return valeur;
 	}
 
 	@Override
 	public void setValeur(Float valeur) {
-		// TODO Auto-generated method stub
-
+		super.valeur = valeur;
 	}
 
 }
