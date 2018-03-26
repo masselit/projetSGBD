@@ -8,26 +8,23 @@ public class StringSGBD extends TypeSGBD<String> {
 
 	@Override
 	public void serialisation(DataOutputStream os, String data) throws IOException {
-		// TODO Auto-generated method stub
-		
+		os.writeUTF(data);
 	}
 
 	@Override
 	public String deserialisation(DataInputStream is) throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+		return is.readUTF();
 	}
 
 	@Override
 	public String parse(String data) {
-		// TODO Auto-generated method stub
-		return null;
+		return data;
 	}
 
 	@Override
 	public int taille() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 8;
 	}
 	
+	public String concat(String s1, String s2) { return s1+s2;}
 }

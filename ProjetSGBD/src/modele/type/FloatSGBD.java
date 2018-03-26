@@ -8,26 +8,23 @@ public class FloatSGBD extends TypeSGBD<Float> {
 
 	@Override
 	public void serialisation(DataOutputStream os, Float data) throws IOException {
-		// TODO Auto-generated method stub
-		
+		os.writeFloat(data);
 	}
 
 	@Override
 	public Float deserialisation(DataInputStream is) throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+		return is.readFloat();
 	}
 
 	@Override
 	public Float parse(String data) {
-		// TODO Auto-generated method stub
-		return null;
+		return Float.parseFloat(data);
 	}
 
 	@Override
 	public int taille() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 4;
 	}
 
 }
