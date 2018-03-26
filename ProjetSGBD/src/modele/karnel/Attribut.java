@@ -1,5 +1,6 @@
 package modele.karnel;
 
+import modele.type.TypeSGBD;
 
 /**
  * 
@@ -7,8 +8,15 @@ package modele.karnel;
  *
  */
 
-public class Attribut<TypeSGBD> {
+public class Attribut<T extends TypeSGBD<?>> {
 	protected String libelle;
 	protected TypeSGBD type;
 	
+	public String toString(){
+		return null;
+	}
+	
+	public Attribut<T> clone(Attribut<T> attr){
+		return null;
+	}
 }
