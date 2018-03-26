@@ -10,4 +10,5 @@ public abstract class TypeSGBD<T> {
 	public abstract T deserialisation(DataInputStream is) throws IOException;
 	public abstract T parse(String data);
 	public abstract int taille();
+	public String toString(T data) {return data.toString();}
 }
