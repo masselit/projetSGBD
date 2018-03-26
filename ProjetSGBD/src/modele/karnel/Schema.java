@@ -1,9 +1,9 @@
-package modele.struct;
+package modele.karnel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Schema {
+public class Schema implements _Schema{
 	private String nomDeLaRelation;
 	private List<Attribut> attribut;
 	private ClePrimaire clePrimaire;
