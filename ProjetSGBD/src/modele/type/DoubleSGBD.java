@@ -8,26 +8,22 @@ public class DoubleSGBD extends TypeSGBD<Double> {
 
 	@Override
 	public void serialisation(DataOutputStream os, Double data) throws IOException {
-		// TODO Auto-generated method stub
-		
+		os.writeDouble(data);		
 	}
 
 	@Override
 	public Double deserialisation(DataInputStream is) throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+		return is.readDouble();
 	}
 
 	@Override
 	public Double parse(String data) {
-		// TODO Auto-generated method stub
-		return null;
+		return Double.parseDouble(data);
 	}
 
 	@Override
 	public int taille() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 8;
 	}
 	
 }

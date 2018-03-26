@@ -8,26 +8,23 @@ public class ByteSGBD extends TypeSGBD<Byte> {
 
 	@Override
 	public void serialisation(DataOutputStream os, Byte data) throws IOException {
-		// TODO Auto-generated method stub
+		os.writeByte(data);
 		
 	}
 
 	@Override
 	public Byte deserialisation(DataInputStream is) throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+		return is.readByte();
 	}
 
 	@Override
 	public Byte parse(String data) {
-		// TODO Auto-generated method stub
-		return null;
+		return Byte.parseByte(data);
 	}
 
 	@Override
 	public int taille() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 1;
 	}
 
 }

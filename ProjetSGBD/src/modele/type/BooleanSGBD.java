@@ -8,26 +8,23 @@ public class BooleanSGBD extends TypeSGBD<Boolean> {
 
 	@Override
 	public void serialisation(DataOutputStream os, Boolean data) throws IOException {
-		// TODO Auto-generated method stub
+		os.writeBoolean(data);
 		
 	}
 
 	@Override
 	public Boolean deserialisation(DataInputStream is) throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+		return is.readBoolean();
 	}
 
 	@Override
 	public Boolean parse(String data) {
-		// TODO Auto-generated method stub
-		return null;
+		return Boolean.parseBoolean(data);
 	}
 
 	@Override
 	public int taille() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 1;
 	}
 
 }
