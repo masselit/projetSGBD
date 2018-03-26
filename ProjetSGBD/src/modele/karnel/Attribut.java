@@ -10,7 +10,7 @@ import modele.type.TypeSGBD;
 
 public class Attribut<T extends TypeSGBD<?>> {
 	protected String libelle;
-	protected TypeSGBD type;
+	protected TypeSGBD<T> type;
 	
 	public String toString(){
 		return null;
