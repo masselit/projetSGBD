@@ -18,7 +18,7 @@ public class ShortSGBD extends TypeSGBD<Short> {
 
 	@Override
 	public Short parse(String data) {
-		return null;
+		return Short.parseShort(data);
 	}
 
 	@Override
