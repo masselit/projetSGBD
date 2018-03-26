@@ -13,5 +13,3 @@ public class Schema implements _Schema{
 		this.nomDeLaRelation = nomDeLaRelation;
 	}
 }
-
-// test git
