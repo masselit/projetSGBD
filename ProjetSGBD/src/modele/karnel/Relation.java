@@ -1,6 +1,6 @@
 package modele.karnel;
 
-public class Relation implements _Relation{
+public abstract class Relation implements _Relation{
 	private Schema schema;
 	
 }
