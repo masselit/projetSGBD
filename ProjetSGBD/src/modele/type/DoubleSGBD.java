@@ -25,5 +25,4 @@ public class DoubleSGBD extends TypeSGBD<Double> {
 	public int taille() {
 		return 8;
 	}
-	
 }

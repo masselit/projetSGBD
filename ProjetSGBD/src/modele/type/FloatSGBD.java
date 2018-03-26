@@ -26,5 +26,4 @@ public class FloatSGBD extends TypeSGBD<Float> {
 		// TODO Auto-generated method stub
 		return 4;
 	}
-
 }

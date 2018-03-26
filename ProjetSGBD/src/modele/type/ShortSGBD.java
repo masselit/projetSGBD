@@ -25,5 +25,4 @@ public class ShortSGBD extends TypeSGBD<Short> {
 	public int taille() {
 		return 2;
 	}
-
 }

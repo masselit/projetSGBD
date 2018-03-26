@@ -26,5 +26,4 @@ public class ByteSGBD extends TypeSGBD<Byte> {
 	public int taille() {
 		return 1;
 	}
-
 }

@@ -27,5 +27,4 @@ public class CharacterSGBD extends TypeSGBD<Character> {
 	public int taille() {
 		return 1;
 	}
-
 }

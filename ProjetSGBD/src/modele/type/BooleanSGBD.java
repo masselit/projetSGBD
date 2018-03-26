@@ -26,5 +26,4 @@ public class BooleanSGBD extends TypeSGBD<Boolean> {
 	public int taille() {
 		return 1;
 	}
-
 }

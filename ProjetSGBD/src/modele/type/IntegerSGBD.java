@@ -27,7 +27,4 @@ public class IntegerSGBD extends TypeSGBD<Integer> {
 		// TODO Auto-generated method stub
 		return 4;
 	}
-
-
-
 }
