@@ -28,4 +28,10 @@ public class LongSGBD extends TypeSGBD<Long> {
 	public int compare(long a,long b) {
 		return Long.compare(a,b);
 	}
+	
+	public long add(long a, long b) { return a+b; }
+	public long sub(long a, long b) { return a-b; }
+	public long mult(long a, long b) { return a*b; }
+	public long div(long a, long b) { return a/b; }
+	public long reste(long a, long b) { return a%b; }
 }
