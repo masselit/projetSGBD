@@ -17,5 +17,4 @@ public interface _Schema {
 	public _Tuple deserialisation(byte[] b);
 	public byte[] serialisation(_Tuple interfaceTuple);
 	public _Schema sousSchema(String[] strTab);
-	public List<Short> indexKeys();
 }
