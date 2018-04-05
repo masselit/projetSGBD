@@ -25,4 +25,8 @@ public class ShortSGBD extends TypeSGBD<Short> {
 	public int taille() {
 		return 2;
 	}
+	
+	public int compare(short a,short b) {
+		return Short.compare(a,b);
+	}
 }

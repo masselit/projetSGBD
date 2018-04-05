@@ -26,4 +26,8 @@ public class ByteSGBD extends TypeSGBD<Byte> {
 	public int taille() {
 		return 1;
 	}
+	
+	public int compare(byte a,byte b) {
+		return Byte.compare(a,b);
+	}
 }

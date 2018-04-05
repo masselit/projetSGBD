@@ -26,4 +26,8 @@ public class BooleanSGBD extends TypeSGBD<Boolean> {
 	public int taille() {
 		return 1;
 	}
+	
+	public int compare(boolean a,boolean b) {
+		return Boolean.compare(a,b);
+	}
 }

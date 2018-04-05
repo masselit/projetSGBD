@@ -25,4 +25,8 @@ public class DoubleSGBD extends TypeSGBD<Double> {
 	public int taille() {
 		return 8;
 	}
+	
+	public int compare(double a,double b) {
+		return Double.compare(a,b);
+	}
 }

@@ -27,4 +27,8 @@ public class CharacterSGBD extends TypeSGBD<Character> {
 	public int taille() {
 		return 1;
 	}
+	
+	public int compare(char a,char b) {
+		return Character.compare(a,b);
+	}
 }
