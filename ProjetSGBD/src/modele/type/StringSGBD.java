@@ -35,8 +35,4 @@ public class StringSGBD extends TypeSGBD<String> {
 	@Override public String toString() {
 		return "SGBD String";
 	}
-	
-	public int compare(String a,String b) {
-		return a.compareTo(b);
-	}
 }
