@@ -31,13 +31,11 @@ public class ShortSGBD extends TypeSGBD<Short> {
 
 	}
 	
-	public short add (short a, short b) {
-		return (short) (a+b);
-	}
-	
-	public short sub (short a, short b) {
-		return (short) (a-b);
-	}
+	public short add (short a, short b) { return (short) (a+b); }
+	public short sub (short a, short b) { return (short) (a-b); }
+	public short mult(short a, short b) { return (short) (a*b); }
+	public short div(short a, short b) { return (short) (a/b); }
+	public short reste(short a, short b) { return (short) (a%b); }
 	
 	
 }
