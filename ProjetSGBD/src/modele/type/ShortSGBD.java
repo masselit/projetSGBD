@@ -28,5 +28,6 @@ public class ShortSGBD extends TypeSGBD<Short> {
 	
 	public int compare(short a,short b) {
 		return Short.compare(a,b);
+
 	}
 }

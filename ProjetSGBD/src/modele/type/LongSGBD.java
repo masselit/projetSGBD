@@ -24,6 +24,7 @@ public class LongSGBD extends TypeSGBD<Long> {
 		return 8;
 	}
 	
+
 	public int compare(long a,long b) {
 		return Long.compare(a,b);
 	}

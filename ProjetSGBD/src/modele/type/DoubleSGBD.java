@@ -26,6 +26,7 @@ public class DoubleSGBD extends TypeSGBD<Double> {
 		return 8;
 	}
 	
+
 	public int compare(double a,double b) {
 		return Double.compare(a,b);
 	}
