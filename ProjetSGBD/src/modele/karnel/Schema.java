@@ -7,12 +7,12 @@ import modele.karnel.tuple._Tuple;
 import modele.type.TypeSGBD;
 
 public class Schema implements _Schema{
-	private String nomDeLaRelation;
-	private List<Attribut> attribut;
+	private final String nomDeLaRelation;
+	private final Attribut<TypeSGBD<?>>[] attribut;
 	private ClePrimaire clePrimaire;
 	
-	public Schema(String nomDeLaRelation){
-		this.attribut = new ArrayList<Attribut>();
+	public Schema(String nomDeLaRelation,Attribut<TypeSGBD<?>>...attributs ){
+		this.attribut =attributs ;
 		this.nomDeLaRelation = nomDeLaRelation;
 	}
 

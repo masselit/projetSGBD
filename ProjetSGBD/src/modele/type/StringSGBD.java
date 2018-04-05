@@ -27,4 +27,8 @@ public class StringSGBD extends TypeSGBD<String> {
 	}
 	
 	public String concat(String s1, String s2) { return s1+s2;}
+	
+	@Override public String toString() {
+		return "SGBD String";
+	}
 }
