@@ -28,4 +28,11 @@ public class Attribut<T extends TypeSGBD<?>> {
 	public Attribut<T> clone(Attribut<T> attr){
 		return null;
 	}
+	
+	public boolean equal(Attribut<T> att) {
+		if ((this.libelle == att.libelle) && (this.type == att.type)) {
+			return 1;
+		}
+		return 0;
+	}
 }
