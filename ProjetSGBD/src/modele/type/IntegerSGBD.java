@@ -27,4 +27,8 @@ public class IntegerSGBD extends TypeSGBD<Integer> {
 		// TODO Auto-generated method stub
 		return 4;
 	}
+	
+	public int compare(int a,int b) {
+		return Integer.compare(a,b);
+	}
 }

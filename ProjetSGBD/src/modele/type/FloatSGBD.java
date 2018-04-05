@@ -26,4 +26,16 @@ public class FloatSGBD extends TypeSGBD<Float> {
 		// TODO Auto-generated method stub
 		return 4;
 	}
+	
+	public int compare(float a,float b) {
+		if (a < b) {
+			return -1;
+		}
+		else if(a > b) {
+			return 1;
+		}
+		else {
+			return 0;
+		}
+	}
 }
