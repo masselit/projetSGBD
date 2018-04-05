@@ -23,4 +23,8 @@ public class LongSGBD extends TypeSGBD<Long> {
 	@Override public int taille() {
 		return 8;
 	}
+	
+	public int compare(long a, long b) {
+		return Long.compare(a, b);
+	}
 }

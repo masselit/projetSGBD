@@ -28,6 +28,10 @@ public class StringSGBD extends TypeSGBD<String> {
 	
 	public String concat(String s1, String s2) { return s1+s2;}
 	
+	public int compare(String a, String b) {
+		return a.compareTo(b);
+	}
+	
 	@Override public String toString() {
 		return "SGBD String";
 	}
