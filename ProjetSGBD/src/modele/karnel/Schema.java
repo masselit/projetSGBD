@@ -4,13 +4,11 @@ package modele.karnel;
 import modele.karnel.tuple.Tuple;
 
 public class Schema implements _Schema{
-	private final String nomDeLaRelation;
 	private final Attribut[] attributs;
 	private ClePrimaire clePrimaire;
 	
-	public Schema(String nomDeLaRelation,Attribut...attributs ){
+	public Schema(Attribut...attributs ){
 		this.attributs = attributs ;
-		this.nomDeLaRelation = nomDeLaRelation;
 	}
 
 	@Override

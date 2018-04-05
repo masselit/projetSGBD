@@ -1,13 +1,23 @@
 package modele.karnel.tuple;
 
-import modele.karnel.Attribut;
+import java.util.Iterator;
 
-public class Tuple{
+public class Tuple implements Iterable<Object>{
 
-	private final Attribut[] attributs;
+	private final Object[] valeurs;
 	
-	public Tuple(Attribut... attributs){
-		this.attributs = attributs;
+	public Tuple(Object... valeurs){
+		this.valeurs = valeurs;
+	}
+
+	@Override
+	public Iterator<Object> iterator() {
+		// TODO Auto-generated method stub
+		return new Iterator<Object>() {
+			private int index =0;
+			@Override public boolean hasNext() {return index<valeurs.length;}
+			@Override public Object next() {return valeurs[index++];}
+		};
 	}
 
 }

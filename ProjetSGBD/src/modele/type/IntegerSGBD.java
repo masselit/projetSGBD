@@ -5,13 +5,12 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 public class IntegerSGBD extends TypeSGBD<Integer> {
-	private static final IntegerSGBD TYPE = new IntegerSGBD();
+	public static final IntegerSGBD TYPE = new IntegerSGBD();
 	private IntegerSGBD() { }
 	
 	@Override
 	public void serialisation(DataOutputStream os, Integer data) throws IOException {
 		os.writeInt(data);
-		
 	}
 
 	@Override

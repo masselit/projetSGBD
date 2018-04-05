@@ -5,7 +5,7 @@ import java.util.Iterator;
 import modele.karnel._Relation;
 import modele.karnel.tuple.Tuple;
 
-public class Selection extends StateLessRelationUnitaire {
+public class Selection extends StateLessRelationUnaire {
 
 	public Selection(_Relation relation){
 		

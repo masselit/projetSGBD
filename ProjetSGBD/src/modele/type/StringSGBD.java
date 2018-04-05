@@ -5,7 +5,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 public class StringSGBD extends TypeSGBD<String> {
-	private static final StringSGBD TYPE = new StringSGBD();
+	public static final StringSGBD TYPE = new StringSGBD();
 	private StringSGBD() { }
 	
 	@Override
