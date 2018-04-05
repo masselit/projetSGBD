@@ -1,48 +1,65 @@
 package modele.karnel;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import modele.karnel.tuple._Tuple;
 import modele.type.TypeSGBD;
 
 public class Schema implements _Schema{
 	private final String nomDeLaRelation;
-	private final Attribut<TypeSGBD<?>>[] attribut;
+	private final Attribut<TypeSGBD<?>>[] attributs;
 	private ClePrimaire clePrimaire;
 	
 	public Schema(String nomDeLaRelation,Attribut<TypeSGBD<?>>...attributs ){
-		this.attribut =attributs ;
+		this.attributs = attributs ;
 		this.nomDeLaRelation = nomDeLaRelation;
 	}
 
 	@Override
 	public int indexOf(String str) {
-		// TODO Auto-generated method stub
-		return 0;
+		int index = 0;
+		for(Attribut atr :attributs){
+			if(atr.getName().equals(str)){
+				return index;
+			}
+			index++;
+		}
+		return -1;
 	}
 
 	@Override
 	public int indexOf(Attribut<?> attr) {
-		// TODO Auto-generated method stub
-		return 0;
+		int index = 0;
+		for(Attribut atr :attributs){
+			if(atr.getName().equals(attr.getName())){
+				return index;
+			}
+			index++;
+		}
+		return -1;
 	}
 
 	@Override
 	public Attribut<?> ofIndex(int i) {
-		// TODO Auto-generated method stub
-		return null;
+		return attributs[i];
 	}
 
 	@Override
 	public Attribut<?> ofName(String str) {
-		// TODO Auto-generated method stub
+		for(Attribut atr :attributs){
+			if(atr.getName().equals(str)){
+				return atr;
+			}
+		}
 		return null;
 	}
 
 	@Override
 	public boolean contains(String str) {
-		// TODO Auto-generated method stub
+		for(Attribut atr :attributs){
+			if(atr.getName().equals(str)){
+				return true;
+			}
+		}
 		return false;
 	}
 
@@ -82,9 +99,6 @@ public class Schema implements _Schema{
 		return null;
 	}
 
-	@Override
-	public List<Short> indexKeys() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+	
 }

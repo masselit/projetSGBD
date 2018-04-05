@@ -1,16 +1,18 @@
 package modele.karnel;
 
 
-import modele.type.IntegerSGBD;
 import modele.type.TypeSGBD;
 
-public class ClePrimaire extends Attribut<TypeSGBD> {
-	private TypeSGBD<IntegerSGBD> clePrimaire;
+public class ClePrimaire extends Attribut<TypeSGBD<?>> {
 	
-	public ClePrimaire(IntegerSGBD clePrimaire){
-		this.clePrimaire =(TypeSGBD) clePrimaire;
+	public ClePrimaire(String libelle, TypeSGBD type) {
+		super(libelle, type);
+		
 	}
 	
-	
+	@Override
+	public boolean isClePrimaire(){
+		return true;
+	}
 	
 }
