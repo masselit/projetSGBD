@@ -5,7 +5,9 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 public class StringSGBD extends TypeSGBD<String> {
-
+	private static final StringSGBD TYPE = new StringSGBD();
+	private StringSGBD() { }
+	
 	@Override
 	public void serialisation(DataOutputStream os, String data) throws IOException {
 		os.writeUTF(data);

@@ -5,6 +5,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 public class BooleanSGBD extends TypeSGBD<Boolean> {
+	public static final BooleanSGBD TYPE = new BooleanSGBD();
+	private BooleanSGBD() {}
 
 	@Override
 	public void serialisation(DataOutputStream os, Boolean data) throws IOException {

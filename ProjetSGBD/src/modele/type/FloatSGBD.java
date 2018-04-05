@@ -5,7 +5,9 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 public class FloatSGBD extends TypeSGBD<Float> {
-
+	private static final FloatSGBD TYPE = new FloatSGBD();
+	private FloatSGBD() { }
+	
 	@Override
 	public void serialisation(DataOutputStream os, Float data) throws IOException {
 		os.writeFloat(data);

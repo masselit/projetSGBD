@@ -5,7 +5,9 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 public class ShortSGBD extends TypeSGBD<Short> {
-
+	private static final ShortSGBD TYPE = new ShortSGBD();
+	private ShortSGBD() { }
+	
 	@Override
 	public void serialisation(DataOutputStream os, Short data) throws IOException {
 		os.writeShort(data);
