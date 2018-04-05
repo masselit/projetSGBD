@@ -3,16 +3,12 @@ package modele.karnel;
 
 import modele.type.TypeSGBD;
 
-public class ClePrimaire extends Attribut<TypeSGBD<?>> {
+public class ClePrimaire {
 	
-	public ClePrimaire(String libelle, TypeSGBD type) {
-		super(libelle, type);
+	public ClePrimaire(String libelle, TypeSGBD<?> type) {
+
 		
 	}
 	
-	@Override
-	public boolean isClePrimaire(){
-		return true;
-	}
 	
 }

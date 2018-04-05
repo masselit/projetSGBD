@@ -6,12 +6,12 @@ import modele.bdd.Bdd;
 import modele.karnel.ClePrimaire;
 import modele.karnel._Schema;
 import modele.karnel.state.StateFullRelation;
-import modele.karnel.tuple._Tuple;
+import modele.karnel.tuple.Tuple;
 
 public class StateFullInFileRelation extends StateFullRelation{
 
 	public StateFullInFileRelation(String str, _Schema sch, Bdd bd) {
-		super(str, sch, bd);
+		super(str, bd);
 		// TODO Auto-generated constructor stub
 	}
 	public StateFullInFileRelation(String str, Bdd bd) {
@@ -20,7 +20,7 @@ public class StateFullInFileRelation extends StateFullRelation{
 	}
 
 	@Override
-	public void add(_Tuple tup) {
+	public void add(Tuple tup) {
 		// TODO Auto-generated method stub
 	}
 
@@ -37,7 +37,7 @@ public class StateFullInFileRelation extends StateFullRelation{
 		
 	}
 	
-	public Iterator<_Tuple> iteration() {
+	public Iterator<Tuple> iteration() {
 		return null;
 	}
 	
@@ -45,11 +45,11 @@ public class StateFullInFileRelation extends StateFullRelation{
 		return null;
 	}
 	
-	public _Tuple get(Comparable<?> compa){
+	public Tuple get(Comparable<?> compa){
 		return null;
 	}
 	
-	public _Tuple get(){
+	public Tuple get(){
 		return null;
 	}
 }

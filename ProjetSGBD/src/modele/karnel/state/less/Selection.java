@@ -3,7 +3,7 @@ package modele.karnel.state.less;
 import java.util.Iterator;
 
 import modele.karnel._Relation;
-import modele.karnel.tuple._Tuple;
+import modele.karnel.tuple.Tuple;
 
 public class Selection extends StateLessRelationUnitaire {
 
@@ -14,7 +14,7 @@ public class Selection extends StateLessRelationUnitaire {
 	public void execut() {
 		
 	}
-	public Iterator<_Tuple> iteration() {
+	public Iterator<Tuple> iteration() {
 		return null;
 	}
 	public String signature(){

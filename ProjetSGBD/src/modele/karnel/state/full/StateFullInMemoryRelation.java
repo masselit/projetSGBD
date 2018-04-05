@@ -1,23 +1,26 @@
 package modele.karnel.state.full;
 
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import modele.bdd.Bdd;
 import modele.karnel.ClePrimaire;
-import modele.karnel._Schema;
 import modele.karnel.state.StateFullRelation;
-import modele.karnel.tuple._Tuple;
+import modele.karnel.tuple.Tuple;
 
 public class StateFullInMemoryRelation extends StateFullRelation {
 
-	public StateFullInMemoryRelation(String str, _Schema sch, Bdd bd) {
-		super(str, sch, bd);
-		// TODO Auto-generated constructor stub
+	private Map<Integer,Tuple> map;
+	
+	public StateFullInMemoryRelation(String str,Bdd bd) {
+		super(str, bd);
+		map = new HashMap<>();
 	}
 	
 	@Override
-	public void add(_Tuple tup) {
-		// TODO Auto-generated method stub
+	public void add(Tuple tup) {
+		map.put(map.size()+1, tup);
 	}
 
 	@Override
@@ -32,7 +35,7 @@ public class StateFullInMemoryRelation extends StateFullRelation {
 		
 	}
 	
-	public Iterator<_Tuple> iteration() {
+	public Iterator<Tuple> iteration() {
 		return null;
 	}
 	
@@ -40,11 +43,11 @@ public class StateFullInMemoryRelation extends StateFullRelation {
 		return null;
 	}
 	
-	public _Tuple get(Comparable<?> compa){
+	public Tuple get(Comparable<?> compa){
 		return null;
 	}
 	
-	public _Tuple get(){
+	public Tuple get(){
 		return null;
 	}
 }

@@ -8,11 +8,11 @@ import modele.type.TypeSGBD;
  *
  */
 
-public class Attribut<T extends TypeSGBD<?>> {
+public class Attribut {
 	protected String libelle;
-	protected TypeSGBD<T> type;
+	protected TypeSGBD<?> type;
 	
-	public Attribut(String libelle, TypeSGBD<T> type){
+	public Attribut(String libelle, TypeSGBD<?> type){
 		this.libelle = libelle;
 		this.type = type;
 	}
@@ -25,14 +25,14 @@ public class Attribut<T extends TypeSGBD<?>> {
 		return libelle;
 	}
 	
-	public Attribut<T> clone(Attribut<T> attr){
+	public Attribut clone(Attribut attr){
 		return null;
 	}
 	
-	public boolean equal(Attribut<T> att) {
-		if ((this.libelle == att.libelle) && (this.type == att.type)) {
-			return 1;
+	public boolean equal(Attribut att) {
+		if ((this.libelle.equals(att.libelle)) && (this.type == att.type)) {
+			return true;
 		}
-		return 0;
+		return false;
 	}
 }

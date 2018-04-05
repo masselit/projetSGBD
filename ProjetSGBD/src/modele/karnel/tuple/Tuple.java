@@ -1,23 +1,13 @@
 package modele.karnel.tuple;
 
-public class Tuple implements _Tuple {
+import modele.karnel.Attribut;
 
-	@Override
-	public boolean selectable(int[] i, Object[] obj) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+public class Tuple{
 
-	@Override
-	public _Tuple get(int i) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int degre() {
-		// TODO Auto-generated method stub
-		return 0;
+	private final Attribut[] attributs;
+	
+	public Tuple(Attribut... attributs){
+		this.attributs = attributs;
 	}
 
 }

@@ -1,15 +1,14 @@
 package modele.karnel;
 
 
-import modele.karnel.tuple._Tuple;
-import modele.type.TypeSGBD;
+import modele.karnel.tuple.Tuple;
 
 public class Schema implements _Schema{
 	private final String nomDeLaRelation;
-	private final Attribut<TypeSGBD<?>>[] attributs;
+	private final Attribut[] attributs;
 	private ClePrimaire clePrimaire;
 	
-	public Schema(String nomDeLaRelation,Attribut<TypeSGBD<?>>...attributs ){
+	public Schema(String nomDeLaRelation,Attribut...attributs ){
 		this.attributs = attributs ;
 		this.nomDeLaRelation = nomDeLaRelation;
 	}
@@ -27,7 +26,7 @@ public class Schema implements _Schema{
 	}
 
 	@Override
-	public int indexOf(Attribut<?> attr) {
+	public int indexOf(Attribut attr) {
 		int index = 0;
 		for(Attribut atr :attributs){
 			if(atr.getName().equals(attr.getName())){
@@ -39,12 +38,12 @@ public class Schema implements _Schema{
 	}
 
 	@Override
-	public Attribut<?> ofIndex(int i) {
+	public Attribut ofIndex(int i) {
 		return attributs[i];
 	}
 
 	@Override
-	public Attribut<?> ofName(String str) {
+	public Attribut ofName(String str) {
 		for(Attribut atr :attributs){
 			if(atr.getName().equals(str)){
 				return atr;
@@ -69,11 +68,6 @@ public class Schema implements _Schema{
 		return 0;
 	}
 
-	@Override
-	public _Schema remove(Attribut<?> attr) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public _Schema indexedSchema() {
@@ -82,13 +76,13 @@ public class Schema implements _Schema{
 	}
 
 	@Override
-	public _Tuple deserialisation(byte[] b) {
+	public Tuple deserialisation(byte[] b) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public byte[] serialisation(_Tuple interfaceTuple) {
+	public byte[] serialisation(Tuple interfaceTuple) {
 		// TODO Auto-generated method stub
 		return null;
 	}
