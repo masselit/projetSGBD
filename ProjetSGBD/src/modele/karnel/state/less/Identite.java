@@ -14,7 +14,6 @@ public class Identite extends StateLessRelationUnaire {
 
 	@Override
 	public void execut() {
-		// TODO Auto-generated method stub
 
 	}
 

@@ -10,13 +10,11 @@ import modele.karnel.tuple.Tuple;
 
 public class StateFullInFileRelation extends StateFullRelation{
 
-	public StateFullInFileRelation(String str, _Schema sch, Bdd bd) {
-		super(str, bd);
-		// TODO Auto-generated constructor stub
-	}
-	public StateFullInFileRelation(String str, Bdd bd) {
-		super(str, bd);
-		// TODO Auto-generated constructor stub
+
+
+	public StateFullInFileRelation(Bdd bd, String nom, _Schema schema) {
+		super(bd, nom, schema);
+		
 	}
 
 	@Override
@@ -50,6 +48,11 @@ public class StateFullInFileRelation extends StateFullRelation{
 	}
 	
 	public Tuple get(){
+		return null;
+	}
+	@Override
+	public Iterator<Tuple> iterator() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

@@ -12,7 +12,6 @@ public class Tuple implements Iterable<Object>{
 
 	@Override
 	public Iterator<Object> iterator() {
-		// TODO Auto-generated method stub
 		return new Iterator<Object>() {
 			private int index =0;
 			@Override public boolean hasNext() {return index<valeurs.length;}
