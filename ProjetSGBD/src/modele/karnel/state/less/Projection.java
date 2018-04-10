@@ -25,7 +25,7 @@ public class Projection extends StateLessRelationUnaire {
 	private final int[] indexes;
 	public Projection(_Relation r, _Schema schema ){
 		super("selection("+r.nom(),schema, r);
-		indexes = new int[schema.degre()];//TODO: pencer à écrire la fonction degre dans Schéma
+		indexes = new int[schema.degre()];
 		_Schema s = r.schema();
 		/*for(Attribut a : schema) {
 			s.get()
