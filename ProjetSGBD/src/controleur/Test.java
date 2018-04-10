@@ -1,8 +1,8 @@
+package controleur;
 import modele.bdd.Bdd;
 import modele.commande.Print;
 import modele.karnel.Attribut;
 import modele.karnel.Schema;
-import modele.karnel._Relation;
 import modele.karnel._Schema;
 import modele.karnel.state.StateFullRelation;
 import modele.karnel.state.full.StateFullInMemoryRelation;

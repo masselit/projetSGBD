@@ -5,7 +5,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 public class FloatSGBD extends TypeSGBD<Float> {
-	private static final FloatSGBD TYPE = new FloatSGBD();
+	public static final FloatSGBD TYPE = new FloatSGBD();
 	private FloatSGBD() { }
 	
 	@Override

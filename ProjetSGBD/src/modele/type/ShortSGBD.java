@@ -5,7 +5,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 public class ShortSGBD extends TypeSGBD<Short> {
-	private static final ShortSGBD TYPE = new ShortSGBD();
+	public static final ShortSGBD TYPE = new ShortSGBD();
 	private ShortSGBD() { }
 	
 	@Override

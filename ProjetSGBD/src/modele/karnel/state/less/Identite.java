@@ -3,7 +3,6 @@ package modele.karnel.state.less;
 import java.util.Iterator;
 
 import modele.karnel._Relation;
-import modele.karnel._Schema;
 import modele.karnel.tuple.Tuple;
 
 public class Identite extends StateLessRelationUnaire {
@@ -14,7 +13,7 @@ public class Identite extends StateLessRelationUnaire {
 
 	@Override
 	public void execut() {
-
+		
 	}
 
 	@Override

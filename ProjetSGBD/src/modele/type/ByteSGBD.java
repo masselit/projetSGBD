@@ -7,6 +7,7 @@ import java.io.IOException;
 public class ByteSGBD extends TypeSGBD<Byte> {
 	public static final ByteSGBD TYPE = new ByteSGBD();
 	private ByteSGBD() {}
+	
 	@Override
 	public void serialisation(DataOutputStream os, Byte data) throws IOException {
 		os.writeByte(data);

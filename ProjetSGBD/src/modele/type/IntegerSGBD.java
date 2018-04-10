@@ -25,7 +25,6 @@ public class IntegerSGBD extends TypeSGBD<Integer> {
 
 	@Override
 	public int taille() {
-		// TODO Auto-generated method stub
 		return 4;
 	}
 	

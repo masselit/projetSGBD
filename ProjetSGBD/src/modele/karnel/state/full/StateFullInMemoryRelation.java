@@ -45,9 +45,6 @@ public class StateFullInMemoryRelation extends StateFullRelation {
 	
 	public Long cardinalite() {return (long) map.size();}
 	
-//	public Tuple get(Comparable<?> compa){
-//		return null;
-//	}
 
 	@Override public Iterator<Tuple> iterator() {
 		return new Iterator<Tuple>() {

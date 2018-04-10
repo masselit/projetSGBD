@@ -25,11 +25,11 @@ public class Projection extends StateLessRelationUnaire {
 	private final int[] indexes;
 	public Projection(_Relation r, _Schema schema ){
 		super("selection("+r.nom(),schema, r);
-		indexes = new int[schema.degre()];
+		indexes = new int[schema.degre()];//TODO: pencer à écrire la fonction degre dans Schéma
 		_Schema s = r.schema();
-		for(Attribut a : schema) {
+		/*for(Attribut a : schema) {
 			s.get()
-		}
+		}*/
 	}
 	
 	@Override public Iterator<Tuple> iterator() {
@@ -40,7 +40,7 @@ public class Projection extends StateLessRelationUnaire {
 			@Override public Tuple next() {
 				Tuple t = it.next();
 				Object[] x = new Object[indexes.length];
-				for(int i =0; i<indexes.length ;i++) x[i]= t.get(indexes[i]);
+				//for(int i =0; i<indexes.length ;i++) x[i]= t.get(indexes[i]);
 				new Tuple(x);
 				return it.next();
 			}
