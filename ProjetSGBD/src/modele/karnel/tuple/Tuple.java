@@ -27,32 +27,34 @@ public class Tuple implements Iterable<Object>{
 	public void serialisation(DataOutputStream os){
 		for(Object o : this){
 			try {
-				if(o.getClass().isInstance(IntegerSGBD.TYPE)){
+				if(o.getClass().equals(Integer.class)){
 					IntegerSGBD.TYPE.serialisation(os, (Integer) o);
 					
-				}else if(o.getClass().isInstance(BooleanSGBD.TYPE)){
+				}else if(o.getClass().equals(Boolean.class)){
 					BooleanSGBD.TYPE.serialisation(os, (Boolean) o);
 					
-				}else if(o.getClass().isInstance(CharacterSGBD.TYPE)){
+				}else if(o.getClass().equals(Character.class)){
 					CharacterSGBD.TYPE.serialisation(os, (Character) o);
 					
-				}else if(o.getClass().isInstance(ByteSGBD.TYPE)){
+				}else if(o.getClass().equals(Byte.class)){
 					ByteSGBD.TYPE.serialisation(os, (Byte) o);
 					
-				}else if(o.getClass().isInstance(DoubleSGBD.TYPE)){
+				}else if(o.getClass().equals(Double.class)){
 					DoubleSGBD.TYPE.serialisation(os, (Double) o);
 					
-				}else if(o.getClass().isInstance(LongSGBD.TYPE)){
+				}else if(o.getClass().equals(Long.class)){
 					LongSGBD.TYPE.serialisation(os, (Long) o);
 					
-				}else if(o.getClass().isInstance(ShortSGBD.TYPE)){
+				}else if(o.getClass().equals(Short.class)){
 					ShortSGBD.TYPE.serialisation(os, (Short) o);
 					
-				}else if(o.getClass().isInstance(FloatSGBD.TYPE)){
+				}else if(o.getClass().equals(Float.class)){
 					FloatSGBD.TYPE.serialisation(os, (Float) o);
 					
-				}else if(o.getClass().isInstance(StringSGBD.TYPE)){
+				}else if(o.getClass().equals(String.class)){
 					StringSGBD.TYPE.serialisation(os, (String) o);
+				}else{
+					System.out.println("rien");
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -63,6 +65,7 @@ public class Tuple implements Iterable<Object>{
 	public void deserialisation(DataInputStream is){
 		int i =0;
 		try{
+			System.out.println("toto");
 			while(is.available()>0){
 				TypeSGBD<?> obj = (TypeSGBD<?>) new Object();
 				valeurs[i++] = obj.deserialisation(is);

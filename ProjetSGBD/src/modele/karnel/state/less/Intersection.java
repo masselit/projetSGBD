@@ -11,7 +11,6 @@ public class Intersection extends StateLessRelationBinaire {
 	
 	public Intersection (String nom, _Schema schema, _Relation relation1,_Relation relation2){
 		super("intersection(" + nom, schema, relation2, relation2);
-		
 	}
 	@Override
 	public void execut() {
