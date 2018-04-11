@@ -16,19 +16,28 @@ import modele.type.IntegerSGBD;
 import modele.type.LongSGBD;
 import modele.type.ShortSGBD;
 import modele.type.StringSGBD;
-import modele.type.TypeSGBD;
 
+/**
+ * Classe qui est la représentation d'un Tuple en base de données
+ *
+ */
 public class Tuple implements Iterable<Object>{
 
+	/**
+	 * Attribut
+	 */
 	private final Object[] valeurs;
-	
+	/**
+	 * Constructeur de Tuples
+	 * @param valeurs un tableau d'objet
+	 */
 	public Tuple(Object... valeurs){
 		this.valeurs = valeurs;
 	}
 
 	/**
 	 * Sérailisation d'un Tuple
-	 * @param os
+	 * @param os DataOutputStream
 	 */
 	public void serialisation(DataOutputStream os){
 		for(Object o : this){
@@ -69,28 +78,30 @@ public class Tuple implements Iterable<Object>{
 		}
 	}
 	
-	public Tuple deserialisation(DataInputStream is, _Schema sch){
-		
+	/**
+	 * Permet de traduire les types primitifs
+	 * @param is
+	 * @param sch le schémat du tuple
+	 * @return Un Tuple
+	 */
+	public Tuple deserialisation(DataInputStream is, _Schema sch){		
 		Object[] obj = new Object[sch.degre()];
-		try{
-			
-			for(int i =0;i<sch.degre();i++){
-				
-				Attribut att =sch.ofIndex(i);
-				
-				System.out.println(att.getName() +" " + att.size());
-				
+		try{		
+			for(int i =0;i<sch.degre();i++){			
+				Attribut att =sch.ofIndex(i);			
 				obj[i] = att.getType().deserialisation(is);
-			}
-			
+			}			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return new Tuple(obj);
 	}
 	
-	@Override
-	public Iterator<Object> iterator() {
+	/**
+	 * Permet de parcourir plus facilement un Tuple
+	 * @return Un itérator de Object
+	 */
+	@Override public Iterator<Object> iterator() {
 		return new Iterator<Object>() {
 			private int index = 0;
 			@Override public boolean hasNext() {return index<valeurs.length;}

@@ -24,6 +24,9 @@ import modele.karnel.tuple.Tuple;
  */
 public class StateFullInFileRelation extends StateFullRelation{
 
+	/**
+	 * Attributs
+	 */
 	private static int key = 0;
 	private String url;
 	private DataOutputStream dos;
@@ -65,7 +68,8 @@ public class StateFullInFileRelation extends StateFullRelation{
 	 */
 	@Override public void add(Tuple tup) {
 		tup.serialisation(dos);
-		tuples.put(key++,key * this.schema().sizeTuple());//pour savoir a quelle emplacement regarder
+		//pour savoir à partir de où son les tuples
+		tuples.put(key++,key * this.schema().sizeTuple());
 		
 	}
 
