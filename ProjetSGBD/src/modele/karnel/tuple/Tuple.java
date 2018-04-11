@@ -98,4 +98,8 @@ public class Tuple implements Iterable<Object>{
 		};
 	}
 
+	public Object get(int i) {
+		return valeurs[i];
+	}
+
 }

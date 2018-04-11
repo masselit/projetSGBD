@@ -9,19 +9,13 @@ import modele.karnel.tuple.Tuple;
 public class Intersection extends StateLessRelationBinaire {
 
 	
-	
-	protected Intersection(String nom, _Schema schema, _Relation r1, _Relation r2) {
-		super(nom, schema, r1, r2);
-		// TODO Auto-generated constructor stub
+	public Intersection (String nom, _Schema schema, _Relation relation1,_Relation relation2){
+		super("intersection(" + nom, schema, relation2, relation2);
 	}
 	@Override
 	public void execut() {
 		
 	}
-	public Iterator<Tuple> iteration() {
-		return null;
-	}
-	
 	@Override
 	public Iterator<Tuple> iterator() {
 		// TODO Auto-generated method stub
