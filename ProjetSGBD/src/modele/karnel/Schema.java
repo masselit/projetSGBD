@@ -60,10 +60,11 @@ public class Schema implements _Schema{
 		return false;
 	}
 
+	//Return le nombre d'attibuts
 	@Override
 	public int degre() {
 		// TODO Auto-generated method stub
-		return 0;
+		return attributs.length;
 	}
 
 
