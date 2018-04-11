@@ -1,6 +1,9 @@
 package modele.karnel;
 
 
+import java.util.Arrays;
+import java.util.Iterator;
+
 import modele.karnel.tuple.Tuple;
 
 public class Schema implements _Schema{
@@ -92,6 +95,9 @@ public class Schema implements _Schema{
 		return null;
 	}
 
+	public Iterator<Attribut> iterator() {
+		return Arrays.asList(attributs).iterator();
+	}
 	
 	
 }

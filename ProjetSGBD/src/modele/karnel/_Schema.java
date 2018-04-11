@@ -1,5 +1,6 @@
 package modele.karnel;
 
+import java.util.Iterator;
 import java.util.List;
 
 import modele.karnel.tuple.Tuple;
@@ -16,4 +17,5 @@ public interface _Schema {
 	public Tuple deserialisation(byte[] b);
 	public byte[] serialisation(Tuple interfaceTuple);
 	public _Schema sousSchema(String[] strTab);
+	public Iterator<Attribut> iterator();
 }
