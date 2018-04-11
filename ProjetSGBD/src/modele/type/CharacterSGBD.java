@@ -26,7 +26,7 @@ public class CharacterSGBD extends TypeSGBD<Character> {
 	}
 
 	@Override
-	public int taille() {
+	public long taille() {
 		return 1;
 	}
 	

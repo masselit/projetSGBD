@@ -24,7 +24,7 @@ public class IntegerSGBD extends TypeSGBD<Integer> {
 	}
 
 	@Override
-	public int taille() {
+	public long taille() {
 		return 4;
 	}
 	

@@ -25,7 +25,7 @@ public class BooleanSGBD extends TypeSGBD<Boolean> {
 	}
 
 	@Override
-	public int taille() {
+	public long taille() {
 		return 1;
 	}
 	

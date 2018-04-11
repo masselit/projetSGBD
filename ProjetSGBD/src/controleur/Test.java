@@ -24,12 +24,11 @@ public class Test {
 		//bd.add(r);
 		
 		
-		StateFullRelation r = new StateFullInFileRelation(bd,"Relation",schema);
+		StateFullRelation r = new StateFullInFileRelation(bd,"RELATION",schema);
 		bd.add(r);
-		bd.get("Relation").add(new Tuple(123,"MORAT"));
-		//bd.get("RELATION").add(new Tuple(123,"MORAT"));
-		//bd.get("RELATION").add(new Tuple(1234,"MASSELIN"));
-		//bd.get("RELATION").add(new Tuple(12434,"DERVIEUX"));
+		bd.get("RELATION").add(new Tuple(123,"MORAT"));
+		bd.get("RELATION").add(new Tuple(1234,"MASSELIN"));
+		bd.get("RELATION").add(new Tuple(12434,"DERVIEUX"));
 		
 		//new Print(bd.get("RELATION")).execute();
 		new Print(new Identite(bd.get("RELATION"))).execute();

@@ -60,10 +60,20 @@ public class Schema implements _Schema{
 		return false;
 	}
 
-	//Return le nombre d'attibuts
+	@Override
+	public long sizeTuple(){
+		long size = 0;
+		for(Attribut att : attributs){
+			size += att.size();
+		}
+		return size;
+	}
+	
+	/**
+	 * Return le nombre d'attibuts
+	 */
 	@Override
 	public int degre() {
-		// TODO Auto-generated method stub
 		return attributs.length;
 	}
 
@@ -81,7 +91,7 @@ public class Schema implements _Schema{
 	}
 
 	@Override
-	public byte[] serialisation(Tuple interfaceTuple) {
+	public byte[] serialisation(Tuple tuple) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -5,6 +5,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.Iterator;
 
+import modele.karnel.Attribut;
+import modele.karnel._Schema;
 import modele.type.BooleanSGBD;
 import modele.type.ByteSGBD;
 import modele.type.CharacterSGBD;
@@ -24,9 +26,14 @@ public class Tuple implements Iterable<Object>{
 		this.valeurs = valeurs;
 	}
 
+	/**
+	 * Sérailisation d'un Tuple
+	 * @param os
+	 */
 	public void serialisation(DataOutputStream os){
 		for(Object o : this){
 			try {
+				
 				if(o.getClass().equals(Integer.class)){
 					IntegerSGBD.TYPE.serialisation(os, (Integer) o);
 					
@@ -62,17 +69,24 @@ public class Tuple implements Iterable<Object>{
 		}
 	}
 	
-	public void deserialisation(DataInputStream is){
-		int i =0;
+	public Tuple deserialisation(DataInputStream is, _Schema sch){
+		
+		Object[] obj = new Object[sch.degre()];
 		try{
-			System.out.println("toto");
-			while(is.available()>0){
-				TypeSGBD<?> obj = (TypeSGBD<?>) new Object();
-				valeurs[i++] = obj.deserialisation(is);
+			
+			for(int i =0;i<sch.degre();i++){
+				
+				Attribut att =sch.ofIndex(i);
+				
+				System.out.println(att.getName() +" " + att.size());
+				
+				obj[i] = att.getType().deserialisation(is);
 			}
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return new Tuple(obj);
 	}
 	
 	@Override

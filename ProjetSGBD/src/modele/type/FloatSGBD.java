@@ -24,7 +24,7 @@ public class FloatSGBD extends TypeSGBD<Float> {
 	}
 
 	@Override
-	public int taille() {
+	public long taille() {
 		// TODO Auto-generated method stub
 		return 4;
 	}

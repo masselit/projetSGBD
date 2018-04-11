@@ -24,7 +24,7 @@ public class DoubleSGBD extends TypeSGBD<Double> {
 	}
 
 	@Override
-	public int taille() {
+	public long taille() {
 		return 8;
 	}
 	

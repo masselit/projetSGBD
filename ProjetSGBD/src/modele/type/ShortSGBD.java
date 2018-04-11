@@ -24,7 +24,7 @@ public class ShortSGBD extends TypeSGBD<Short> {
 	}
 
 	@Override
-	public int taille() {
+	public long taille() {
 		return 2;
 	}
 	

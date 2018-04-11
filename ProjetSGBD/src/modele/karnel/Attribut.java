@@ -4,7 +4,6 @@ import modele.type.TypeSGBD;
 
 /**
  * 
- * @author Thibaut Masselin
  *
  */
 
@@ -17,6 +16,10 @@ public class Attribut {
 		this.type = type;
 	}
 	
+	public TypeSGBD<?> getType() {
+		return type;
+	}
+
 	public boolean isClePrimaire(){
 		return false;
 	}
@@ -35,4 +38,10 @@ public class Attribut {
 		}
 		return false;
 	}
+	
+	public long size(){
+		return type.taille();
+	}
+	
+	
 }

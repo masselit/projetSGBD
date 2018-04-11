@@ -25,7 +25,7 @@ public class ByteSGBD extends TypeSGBD<Byte> {
 	}
 
 	@Override
-	public int taille() {
+	public long taille() {
 		return 1;
 	}
 	

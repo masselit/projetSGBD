@@ -20,7 +20,7 @@ public class LongSGBD extends TypeSGBD<Long> {
 		return Long.parseLong(data);
 	}
 
-	@Override public int taille() {
+	@Override public long taille() {
 		return 8;
 	}
 	

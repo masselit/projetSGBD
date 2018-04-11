@@ -26,6 +26,8 @@ public class StateFullInFileRelation extends StateFullRelation{
 
 	private static int key = 0;
 	private String url;
+	private DataOutputStream dos;
+	private DataInputStream dis;
 	private RandomAccessFile file;
 	private Map<Integer,Long> tuples = new TreeMap<>();
 
@@ -39,7 +41,9 @@ public class StateFullInFileRelation extends StateFullRelation{
 		super(bd, nom, schema);
 		this.url ="./src/filesDonnees/"+this.nom()+".tuples";
 		try {
-			this.file = new RandomAccessFile(new File(url), "rw");
+			this.file = new RandomAccessFile(new File(url), "rws");
+			dos = new DataOutputStream(new FileOutputStream(new File(url)));
+			dis = new DataInputStream(new FileInputStream(new File(url)));
 		} catch (FileNotFoundException e) {
 			System.err.println("Impossible de créer la relation :" + e.getMessage());
 			//e.printStackTrace();
@@ -60,13 +64,8 @@ public class StateFullInFileRelation extends StateFullRelation{
 	 * @parm tup ajoute un nouveau tuple dans la relation
 	 */
 	@Override public void add(Tuple tup) {
-		try {
-			tup.serialisation(new DataOutputStream(new FileOutputStream(url)));
-			tuples.put(key++,file.getFilePointer());
-		} catch (IOException e) {
-			System.err.println("Impossible d'ajouter un élément à la relation"+ this.nom() +" :" + e.getMessage());
-			e.printStackTrace();
-		}
+		tup.serialisation(dos);
+		tuples.put(key++,key * this.schema().sizeTuple());//pour savoir a quelle emplacement regarder
 		
 	}
 
@@ -85,9 +84,8 @@ public class StateFullInFileRelation extends StateFullRelation{
 			Iterator<Long> it = tuples.values().iterator();
 			@Override public boolean hasNext() {return it.hasNext();}
 			@Override public Tuple next() {
-				System.out.println("test");
 				it.next();
-				return new Tuple();}
+				return new Tuple().deserialisation(dis, schema());}
 		};
 	}
 }
