@@ -18,7 +18,6 @@ public class Identite extends StateLessRelationUnaire {
 
 	@Override
 	public Iterator<Tuple> iterator() {
-		// TODO Auto-generated method stub
 		return new Iterator<Tuple>() {
 			Iterator<Tuple> it = r.iterator();
 			@Override public boolean hasNext() {return it.hasNext();}

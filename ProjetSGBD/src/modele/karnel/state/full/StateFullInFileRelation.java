@@ -1,7 +1,9 @@
 package modele.karnel.state.full;
 
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -16,44 +18,76 @@ import modele.karnel._Schema;
 import modele.karnel.state.StateFullRelation;
 import modele.karnel.tuple.Tuple;
 
+/**
+ * Création d'une relation dans un fichier
+ *
+ */
 public class StateFullInFileRelation extends StateFullRelation{
 
 	private static int key = 0;
+	private String url;
 	private RandomAccessFile file;
 	private Map<Integer,Long> tuples = new TreeMap<>();
 
+	/**
+	 * Constructeur d'une relation et qui créer un fichier pour stocker la relation
+	 * @param bd définit la base de données 
+	 * @param nom définit le nom de la relation
+	 * @param schema définit le schéma de la relation
+	 */
 	public StateFullInFileRelation(Bdd bd, String nom, _Schema schema) {
 		super(bd, nom, schema);
-		
+		this.url ="./src/filesDonnees/"+this.nom()+".tuples";
 		try {
-			this.file = new RandomAccessFile(new File("src/filesDonnees/"+nom+".tuples"), nom);
+			this.file = new RandomAccessFile(new File(url), "rw");
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.err.println("Impossible de créer la relation :" + e.getMessage());
+			//e.printStackTrace();
 		}
 		
 	}
 	
+	/**
+	 * La cardinalité
+	 * @return la taille de la relation
+	 */
+	public Long cardinalite() {
+		return (long) tuples.size();
+	}
+	
+	/**
+	 * Permet d'ajouter un Tuple dans un fichier
+	 * @parm tup ajoute un nouveau tuple dans la relation
+	 */
 	@Override public void add(Tuple tup) {
-		
 		try {
-			tup.serialisation(new DataOutputStream(new FileOutputStream(file.getFD())));
+			tup.serialisation(new DataOutputStream(new FileOutputStream(url)));
 			tuples.put(key++,file.getFilePointer());
 		} catch (IOException e) {
+			System.err.println("Impossible d'ajouter un élément à la relation"+ this.nom() +" :" + e.getMessage());
 			e.printStackTrace();
 		}
+		
 	}
 
 	@Override
 	public void supp(ClePrimaire cp) {
-		// TODO Auto-generated method stub
+		
 	}
 	
 	
+	/**
+	 * Permet de parcourir plus facilement la relation
+	 * @return Un itérator de Tuple
+	 */
 	@Override public Iterator<Tuple> iterator() {
 		return new Iterator<Tuple>() {
-			Iterator<Tuple> it ;
+			Iterator<Long> it = tuples.values().iterator();
 			@Override public boolean hasNext() {return it.hasNext();}
-			@Override public Tuple next() {return it.next();}
+			@Override public Tuple next() {
+				System.out.println("test");
+				it.next();
+				return new Tuple();}
 		};
 	}
 }
