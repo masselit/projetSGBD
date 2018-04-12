@@ -11,13 +11,21 @@ public class Schema implements _Schema{
 		this.attributs = attributs ;
 	}
 
-	@Override
-	public TypeSGBD<?> getTypeAttribut(String str){
+	/**
+	 * Retourne le type SGBD de l'attribut
+	 * @return TypeSGBD<?>
+	 * @param String
+	 */
+	@Override public TypeSGBD<?> getTypeAttribut(String str){
 		return this.ofIndex(this.indexOf(str)).getType();
 	}
 	
-	@Override
-	public int indexOf(String str) {
+	/**
+	 * Parcours les attributs et renvoie l'index de l'attribut
+	 * @return int
+	 * @param String
+	 */
+	@Override public int indexOf(String str) {
 		int index = 0;
 		for(Attribut atr :attributs){
 			if(atr.getName().equals(str)){
@@ -28,8 +36,12 @@ public class Schema implements _Schema{
 		return -1;
 	}
 
-	@Override
-	public int indexOf(Attribut attr) {
+	/**
+	 * Parcours les attributs et renvoie l'index de l'attribut
+	 * @return int
+	 * @param Attribut
+	 */
+	@Override public int indexOf(Attribut attr) {
 		int index = 0;
 		for(Attribut atr :attributs){
 			if(atr.getName().equals(attr.getName())){
@@ -40,13 +52,21 @@ public class Schema implements _Schema{
 		return -1;
 	}
 
-	@Override
-	public Attribut ofIndex(int i) {
+	/**
+	 * Retourne l'attribut d'index i
+	 * @return Attribut
+	 * @param int
+	 */
+	@Override public Attribut ofIndex(int i) {
 		return attributs[i];
 	}
 
-	@Override
-	public Attribut ofName(String str) {
+	/**
+	 * Retourne l'attribut qui à comme nom le paramètre String
+	 * @return Attribut
+	 * @params String
+	 */
+	@Override public Attribut ofName(String str) {
 		for(Attribut atr :attributs){
 			if(atr.getName().equals(str)){
 				return atr;
@@ -55,8 +75,12 @@ public class Schema implements _Schema{
 		return null;
 	}
 
-	@Override
-	public boolean contains(String str) {
+	/**
+	 * Retourne true si le tableau attributs contient le paramètre String 
+	 * @return Boolean
+	 * @param String
+	 */
+	@Override public boolean contains(String str) {
 		for(Attribut atr :attributs){
 			if(atr.getName().equals(str)){
 				return true;
@@ -65,8 +89,11 @@ public class Schema implements _Schema{
 		return false;
 	}
 
-	@Override
-	public long sizeTuple(){
+	/**
+	 * Renvoie la taille d'un tuple
+	 * @return Long
+	 */
+	@Override public long sizeTuple(){
 		long size = 0;
 		for(Attribut att : attributs){
 			size += att.size();
@@ -76,9 +103,9 @@ public class Schema implements _Schema{
 	
 	/**
 	 * Return le nombre d'attibuts
+	 * @return int
 	 */
-	@Override
-	public int degre() {
+	@Override public int degre() {
 		return attributs.length;
 	}
 
