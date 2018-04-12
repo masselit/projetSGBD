@@ -28,13 +28,53 @@ public class IntegerSGBD extends TypeSGBD<Integer> {
 		return 4;
 	}
 	
+	/**
+	 * Permet de comparer 2 entiers
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public int compare(int a,int b) {
 		return Integer.compare(a,b);
 	}
 	
+	/**
+	 * Permet d'aditionner 2 entiers
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public int add(int a, int b) { return a+b; }
+	
+	/**
+	 * Permet de soustraire 2 entiers
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public int sub(int a, int b) { return a-b; }
+	
+	/**
+	 * Permet de multiplier 2 entiers
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public int mult(int a, int b) { return a*b; }
+	
+	/**
+	 * Permet de diviser 2 entiers
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public int div(int a, int b) { return a/b; }
+	
+	/**
+	 * Permet de connaitre le reste d'une division entre 2 entiers
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public int reste(int a, int b) { return a%b; }
 }

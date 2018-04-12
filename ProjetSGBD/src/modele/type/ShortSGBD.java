@@ -28,14 +28,55 @@ public class ShortSGBD extends TypeSGBD<Short> {
 		return 2;
 	}
 	
+	/**
+	 * Permet de comparer 2 short
+	 * Si a < b -> return -1
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public int compare(short a,short b) {
 		return Short.compare(a,b);
 
 	}
 	
+	/**
+	 * Permet d'aditioner 2 short
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public short add (short a, short b) { return (short) (a+b); }
+	
+	/**
+	 * Permet de soustraire 2 short
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public short sub (short a, short b) { return (short) (a-b); }
+	
+	/**
+	 * Permet de multiplier 2 short
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public short mult(short a, short b) { return (short) (a*b); }
+	
+	/**
+	 * Permet de diviser 2 short
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public short div(short a, short b) { return (short) (a/b); }
+	
+	/**
+	 * Permet de connaitre le reste d'une division entre 2 short
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public short reste(short a, short b) { return (short) (a%b); }
 }

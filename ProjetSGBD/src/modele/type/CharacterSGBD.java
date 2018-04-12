@@ -30,6 +30,12 @@ public class CharacterSGBD extends TypeSGBD<Character> {
 		return 1;
 	}
 	
+	/**
+	 * Permet de comparer 2 CHAR
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public int compare(char a,char b) {
 		return Character.compare(a,b);
 	}

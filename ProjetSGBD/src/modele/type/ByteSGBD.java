@@ -29,6 +29,12 @@ public class ByteSGBD extends TypeSGBD<Byte> {
 		return 1;
 	}
 	
+	/**
+	 * Permet de comparer de Byte
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public int compare(byte a,byte b) {
 		return Byte.compare(a,b);
 	}

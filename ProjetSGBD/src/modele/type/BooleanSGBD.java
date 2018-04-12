@@ -29,6 +29,12 @@ public class BooleanSGBD extends TypeSGBD<Boolean> {
 		return 1;
 	}
 	
+	/**
+	 * Permet de comparer deux boolean
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public int compare(boolean a,boolean b) {
 		return Boolean.compare(a,b);
 	}
