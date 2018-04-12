@@ -26,8 +26,12 @@ public class Intersection extends StateLessRelationBinaire {
 	public void execut() {
 		
 	}
-	@Override
-	public Iterator<Tuple> iterator() {
+	
+	/**
+	 * Permet de parcourir plus facilement deux Tuples dans deux relations
+	 * @return Un itérator de Tuple
+	 */
+	@Override public Iterator<Tuple> iterator() {
 		return new Iterator<Tuple>() {
 			Iterator<Tuple> it = r1.iterator();
 			Iterator<Tuple> it2 = r2.iterator();
@@ -36,18 +40,15 @@ public class Intersection extends StateLessRelationBinaire {
 				Tuple t = it.next();
 				Tuple t2 = it2.next();
 				
-				Object[] x = new Object[lengthSchema];
-				Object[] y = new Object[lengthSchema];
-				
+				Object[] x = new Object[lengthSchema*2];
+				int p = 0;
 				for(int i = 0; i < lengthSchema ; i++) {
 					x[i] = t.get(r1.schema().indexOf(schema().ofIndex(i)));
-					y[i] = t.get(r1.schema().indexOf(schema().ofIndex(i)));
-					System.out.println(x[i]);
-					System.out.println(y[i]);
-				}
-				
-				return new Tuple(x,y);
-				}
+					p = i + 2;
+					x[p] = t2.get(r2.schema().indexOf(schema().ofIndex(i)));
+				}	
+				return new Tuple(x);
+			}
 		};
 	}
 }

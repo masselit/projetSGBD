@@ -63,7 +63,7 @@ public class Test {
 																new Attribut("C2", bd.get("RELATION").schema().getTypeAttribut("C2"))) )).execute();
 		
 		System.out.println("\n -- INTERSECTION RELATION et RELATION2 :");	
-		new Print(new Intersection(schema, bd.get("RELATION"), bd.get("RELATION2")));
+		new Print(new Intersection(schema, bd.get("RELATION"), bd.get("RELATION2"))).execute();
 	}
 
 }
