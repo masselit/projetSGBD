@@ -47,13 +47,14 @@ public class Test {
 				);		
 		new Print(new Projection(bd.get("RELATION"), schema2)).execute();
 		
-		System.out.println("\n -- PROJECTION C1 || Avec des String 1 :");
+		System.out.println("\n -- PROJECTION C1:");
 		
-		new Print(new Projection(bd.get("RELATION"), "C1")).execute();
+		new Print(new Projection(bd.get("RELATION"), new Schema(new Attribut("C1", bd.get("RELATION").schema().getTypeAttribut("C1"))))).execute();
 		
-		System.out.println("\n -- PROJECTION C1 || Avec des String 2 :");
+		System.out.println("\n -- PROJECTION C1 et C2 :");	
+		new Print(new Projection(bd.get("RELATION"), new Schema(new Attribut("C1", bd.get("RELATION").schema().getTypeAttribut("C1")),
+																new Attribut("C2", bd.get("RELATION").schema().getTypeAttribut("C2"))))).execute();
 		
-		new Print(new Projection(bd.get("RELATION"), "C1","C2")).execute();
 	}
 
 }

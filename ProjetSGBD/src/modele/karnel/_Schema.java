@@ -1,9 +1,7 @@
 package modele.karnel;
 
-import java.util.Iterator;
-import java.util.List;
-
 import modele.karnel.tuple.Tuple;
+import modele.type.TypeSGBD;
 
 public interface _Schema {
 	// A revoire
@@ -18,4 +16,5 @@ public interface _Schema {
 	public byte[] serialisation(Tuple interfaceTuple);
 	public _Schema sousSchema(String[] strTab);
 	public long sizeTuple();
+	public TypeSGBD<?> getTypeAttribut(String str);
 }

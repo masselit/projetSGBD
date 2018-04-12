@@ -1,10 +1,7 @@
 package modele.karnel;
 
-
-import java.util.Arrays;
-import java.util.Iterator;
-
 import modele.karnel.tuple.Tuple;
+import modele.type.TypeSGBD;
 
 public class Schema implements _Schema{
 	private final Attribut[] attributs;
@@ -14,6 +11,11 @@ public class Schema implements _Schema{
 		this.attributs = attributs ;
 	}
 
+	@Override
+	public TypeSGBD<?> getTypeAttribut(String str){
+		return this.ofIndex(this.indexOf(str)).getType();
+	}
+	
 	@Override
 	public int indexOf(String str) {
 		int index = 0;
