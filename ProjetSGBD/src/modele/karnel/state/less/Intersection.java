@@ -8,7 +8,13 @@ import modele.karnel.tuple.Tuple;
 
 public class Intersection extends StateLessRelationBinaire {
 
-	
+	/**
+	 * Constructeur d'une intersection
+	 * @param nom
+	 * @param schema
+	 * @param relation1
+	 * @param relation2
+	 */
 	public Intersection (String nom, _Schema schema, _Relation relation1,_Relation relation2){
 		super("intersection(" + nom, schema, relation2, relation2);
 	}
