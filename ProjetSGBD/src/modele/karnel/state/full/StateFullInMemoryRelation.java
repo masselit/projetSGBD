@@ -6,7 +6,6 @@ import java.util.Map;
 
 import modele.bdd.Bdd;
 import modele.karnel.ClePrimaire;
-import modele.karnel.Schema;
 import modele.karnel._Schema;
 import modele.karnel.state.StateFullRelation;
 import modele.karnel.tuple.Tuple;

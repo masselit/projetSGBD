@@ -53,7 +53,7 @@ public class Test {
 		
 		System.out.println("\n -- PROJECTION C1 et C2 :");	
 		new Print(new Projection(bd.get("RELATION"), new Schema(new Attribut("C1", bd.get("RELATION").schema().getTypeAttribut("C1")),
-																new Attribut("C2", bd.get("RELATION").schema().getTypeAttribut("C2"))))).execute();
+																new Attribut("C2", bd.get("RELATION").schema().getTypeAttribut("C2"))) )).execute();
 		
 	}
 
