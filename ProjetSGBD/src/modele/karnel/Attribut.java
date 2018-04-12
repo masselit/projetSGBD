@@ -28,10 +28,6 @@ public class Attribut {
 		return libelle;
 	}
 	
-	public Attribut clone(Attribut attr){
-		return null;
-	}
-	
 	public boolean equal(Attribut att) {
 		if ((this.libelle.equals(att.libelle)) && (this.type == att.type)) {
 			return true;

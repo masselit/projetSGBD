@@ -13,24 +13,15 @@ import modele.type.StringSGBD;
 
 public class Projection extends StateLessRelationUnaire {
 	
-//	private String selection;
-
-/*	public Selection(String nom, _Schema schema,  _Relation r, Attribut... params ){
-		
-		super(nom, schema,r);
-		_Schema sch = new Schema(params);
-		
-//		this.selection = selection;
-	}*/
-	private final int[] indexes;
+	private final Attribut[] lesAttributSelect;
 	
 	public Projection(_Relation r, _Schema schema ){
-		super("selection("+r.nom(),schema, r);
-		indexes = new int[schema.degre()];
-		_Schema s = r.schema();
-		for(Attribut a : schema.indexOf(a)) {
-			s.iterator();
+		super("selection("+r.nom(),r.schema(), r);
+		Attribut[] temp = new Attribut[schema.degre()];		
+		for(int i = 0;i<schema.degre();i++){
+			temp[i] = schema.ofIndex(i);
 		}
+		lesAttributSelect = temp;
 	}
 	
 	@Override public Iterator<Tuple> iterator() {
@@ -40,10 +31,10 @@ public class Projection extends StateLessRelationUnaire {
 			@Override public boolean hasNext() {return it.hasNext();}
 			@Override public Tuple next() {
 				Tuple t = it.next();
-				Object[] x = new Object[indexes.length];
-				for(int i =0; i<indexes.length ;i++) x[i]= t.get(indexes[i]);
-				new Tuple(x);
-				return it.next();
+				Object[] x = new Object[lesAttributSelect.length];
+				int i = 0;
+				for(Attribut att : lesAttributSelect)x[i++]= t.get(schema().indexOf(att));
+				return new Tuple(x);
 			}
 		};
 	}

@@ -46,7 +46,6 @@ public class StateFullInFileRelation extends StateFullRelation{
 		try {
 			this.file = new RandomAccessFile(new File(url), "rws");
 			dos = new DataOutputStream(new FileOutputStream(new File(url)));
-			dis = new DataInputStream(new FileInputStream(new File(url)));
 		} catch (FileNotFoundException e) {
 			System.err.println("Impossible de créer la relation :" + e.getMessage());
 			//e.printStackTrace();
@@ -84,6 +83,11 @@ public class StateFullInFileRelation extends StateFullRelation{
 	 * @return Un itérator de Tuple
 	 */
 	@Override public Iterator<Tuple> iterator() {
+		try {
+			dis = new DataInputStream(new FileInputStream(new File(url)));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		return new Iterator<Tuple>() {
 			Iterator<Long> it = tuples.values().iterator();
 			@Override public boolean hasNext() {return it.hasNext();}
