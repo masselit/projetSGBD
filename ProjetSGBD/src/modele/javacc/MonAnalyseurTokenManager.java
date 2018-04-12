@@ -14,6 +14,7 @@ import modele.karnel.state.less.Identite;
 import modele.karnel.tuple.Tuple;
 import modele.type.IntegerSGBD;
 import modele.type.StringSGBD;
+import modele.karnel.state.less.Projection;
 
 /** Token Manager. */
 public class MonAnalyseurTokenManager implements MonAnalyseurConstants

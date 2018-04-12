@@ -22,6 +22,7 @@ import modele.karnel.state.less.Identite;
 import modele.karnel.tuple.Tuple;
 import modele.type.IntegerSGBD;
 import modele.type.StringSGBD;
+import modele.karnel.state.less.Projection;
 
 public class MonAnalyseur
 {
@@ -42,70 +43,92 @@ public class MonAnalyseur
     //Debut Parser
     MonAnalyseur parser = new MonAnalyseur(System.in);
     List < String > l = new ArrayList < String > ();
-     
-      int selectTest;
-      String schemaReq;
-      int choix;
-      String table;
-      l.clear();
-      table = "";
-      selectTest = 0;
-      try
+    //Declaration des variables
+    int selectTest;
+    String schemaReq;
+    int choix;
+    String table;
+    String colonnes;
+    //initialisation des variables
+    l.clear();
+    table = "";
+    selectTest = 0;
+    colonnes = "";
+    try
+    {
+      l = parser.REQUETE();
+      for (String valeurIt : l)
       {
-        l = parser.REQUETE();
-        for (String valeurIt : l)
+        switch (selectTest)
         {
-          //=====================================================================
-          // Si Le premier Therme est select
-          //=====================================================================
+          //Si c'est la première iteration
+          case 0 : 
+          // Si le premier mot est select
           if (valeurIt.equals("select"))
           {
             selectTest = 1;
           }
-          else if (selectTest == 1)
-          {
-            schemaReq = valeurIt;
-            if (schemaReq.equals("*"))
-            {
-              choix = 1;
-              selectTest = 2;
-            }
-          }
-
-          else if (selectTest == 2)
-          {
-            selectTest =3;
-          }
-          
-          else if (selectTest == 3)
-          {
-            
-            new Print(new Identite(bd.get(valeurIt))).execute();
-          }
-          //=====================================================================
-          // Si le premier therme est insert
-          //=====================================================================
-          if (valeurIt.equals("insert"))
+          // Si le premier mot insert
+          if (valeurIt.equals("insert into"))
           {
             selectTest = 10;
           }
-          else if (selectTest == 10)
+          break;
+          // Le premier therme était select on recupere donc les colonnes demander soit étoile pour une projection totale
+          // ou seulement le nom de certaine colonnes pour une projection partielle
+          case 1 : 
+          schemaReq = valeurIt;
+          // Si l'utilisateur à rentrer * il veut une projection totale
+          if (schemaReq.equals("*"))
           {
-            table = valeurIt;
-            selectTest = 20;
+            colonnes = "*";
           }
-          else if (selectTest == 20)
+          // Sinon il souhaite une projection partielle et on le stock dans une variable
+          else
           {
-            bd.get(table).add(new Tuple(valeurIt));
+            colonnes = valeurIt;
           }
-        }	
-        System.out.println();
-        System.out.println("syntaxe correcte !");
-      }
-      catch (Exception e)
-      {
-        e.printStackTrace();
-      }
+          selectTest = 2;
+          break;
+          // Le premier thermes était select et donc le troisième est from et on passe au suivant
+          case 2 : 
+          selectTest = 3;
+          break;
+          // Le premier thermes était select et on prend le therme après from qui correspond à la table dans laquel on veut chercher ces informations
+          case 3 : 
+          // Si la table demander était complete alors on utilise la class identite et on lui passe le nom de la table rentrer par l'utilisateur 
+          if (colonnes.equals("*"))
+          {
+            new Print(new Identite(bd.get(valeurIt))).execute();
+          }
+          // sinon on lui passe la table et les champs qu'il souhaite voire
+          else
+          {
+            _Schema sche = new Schema(new Attribut(colonnes, bd.get(valeurIt).schema().getTypeAttribut(colonnes)));
+            new Print(new Projection(bd.get(valeurIt), sche)).execute();
+          }
+          break;
+          // Le premier therme était un insert alors le deuxième est la table où il souhaite inserer
+          case 10 : 
+          table = valeurIt;
+          selectTest = 20;
+          // Le premier therme était insert donc le troisième doit être values
+          case 20 : 
+          selectTest = 30;
+          break;
+          // Le premier therme était insert et donc on peut récupérer ce que l'utilisateur souhaite entrer dans la table
+          case 30 : 
+          bd.get(table).add(new Tuple(valeurIt));
+          break;
+        }
+      }	
+      System.out.println();
+      System.out.println("syntaxe correcte !");
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
+    }
   }
 }
 
@@ -136,10 +159,13 @@ TOKEN [ IGNORE_CASE ] :
 
 TOKEN :
 {
-  < IDF : ([ "a"-"z", "A"-"Z", "*", ",","0"-"9" ])+ >
+  < IDF : ([ "a"-"z", "A"-"Z", "*", ",", "0"-"9" ])+ >
 | < FIN : ";" >
+| < OUVPAR :"(" >
+| < FERPAR : ")" >
 }
 
+//Permet de regrouper tout les types de requete différent
 List < String > REQUETE() :
 {
   List < String > ls;
@@ -153,8 +179,13 @@ List < String > REQUETE() :
   {
     return ls;
   }
+  /*| ls = REQUETESELWHERE()
+  {
+    return ls;
+  }*/
 }
 
+//Permet d'ajouter UN tuple dans une table
 List < String > REQUETEINS() :
 {
   Token t1;
@@ -174,6 +205,7 @@ List < String > REQUETEINS() :
   }
 }
 
+//Requete de selection simple a base d'un select et d'un from
 List < String > REQUETESELSIMPLE() :
 {
   Token t1;
@@ -193,12 +225,34 @@ List < String > REQUETESELSIMPLE() :
   }
 }
 
+//Requete de selection a base d'un select d'un from et d'un where
+List < String > REQUETESELWHERE() :
+{
+  Token t1;
+  Token t2;
+  Token t3;
+  Token t4;
+  Token t5;
+}
+{
+  t1 = < SELECT > t2 = < IDF > t3 = < FROM > t4 = < IDF > t5 = < WHERE >
+  {
+    List < String > s = new ArrayList < String > ();
+    s.add(t1.image);
+    s.add(t2.image);
+    s.add(t3.image);
+    s.add(t4.image);
+    s.add(t5.image);
+    return s;
+  }
+}
+
 String INSERTVALUE() :
 {
   Token t;
 }
 {
-  "(" t = < IDF > ")"
+  < OUVPAR > t = < IDF > < FERPAR >
   {
     return t.image;
   }
@@ -210,23 +264,4 @@ void SUITEINSERT() :
   (
     "," INSERTVALUE()
   )*
-}
-
-List < String > SCHEMA() :
-{
-  Token t;
-}
-{
-  t = < IDF >
-  {
-    List < String > s = new ArrayList < String > ();
-    s.add(t.image);
-    return s;
-  }
-}
-
-void TABLE() :
-{}
-{
-  < IDF >
 }

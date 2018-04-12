@@ -14,6 +14,7 @@ import modele.karnel.state.less.Identite;
 import modele.karnel.tuple.Tuple;
 import modele.type.IntegerSGBD;
 import modele.type.StringSGBD;
+import modele.karnel.state.less.Projection;
 
 public class MonAnalyseur implements MonAnalyseurConstants {
   public static void main(String args []) throws ParseException
@@ -33,72 +34,95 @@ public class MonAnalyseur implements MonAnalyseurConstants {
     //Debut Parser
     MonAnalyseur parser = new MonAnalyseur(System.in);
     List < String > l = new ArrayList < String > ();
-
-      int selectTest;
-      String schemaReq;
-      int choix;
-      String table;
-      l.clear();
-      table = "";
-      selectTest = 0;
-      try
+    //Declaration des variables
+    int selectTest;
+    String schemaReq;
+    int choix;
+    String table;
+    String colonnes;
+    //initialisation des variables
+    l.clear();
+    table = "";
+    selectTest = 0;
+    colonnes = "";
+    try
+    {
+      l = parser.REQUETE();
+      for (String valeurIt : l)
       {
-        l = parser.REQUETE();
-        for (String valeurIt : l)
+        switch (selectTest)
         {
-          //=====================================================================
-          // Si Le premier Therme est select
-          //=====================================================================
+          //Si c'est la première iteration
+          case 0 :
+          // Si le premier mot est select
           if (valeurIt.equals("select"))
           {
             selectTest = 1;
           }
-          else if (selectTest == 1)
-          {
-            schemaReq = valeurIt;
-            if (schemaReq.equals("*"))
-            {
-              choix = 1;
-              selectTest = 2;
-            }
-          }
-
-          else if (selectTest == 2)
-          {
-            selectTest =3;
-          }
-
-          else if (selectTest == 3)
-          {
-
-            new Print(new Identite(bd.get(valeurIt))).execute();
-          }
-          //=====================================================================
-          // Si le premier therme est insert
-          //=====================================================================
-          if (valeurIt.equals("insert"))
+          // Si le premier mot insert
+          if (valeurIt.equals("insert into"))
           {
             selectTest = 10;
           }
-          else if (selectTest == 10)
+          break;
+          // Le premier therme était select on recupere donc les colonnes demander soit étoile pour une projection totale
+          // ou seulement le nom de certaine colonnes pour une projection partielle
+          case 1 :
+          schemaReq = valeurIt;
+          // Si l'utilisateur à rentrer * il veut une projection totale
+          if (schemaReq.equals("*"))
           {
-            table = valeurIt;
-            selectTest = 20;
+            colonnes = "*";
           }
-          else if (selectTest == 20)
+          // Sinon il souhaite une projection partielle et on le stock dans une variable
+          else
           {
-            bd.get(table).add(new Tuple(valeurIt));
+            colonnes = valeurIt;
           }
+          selectTest = 2;
+          break;
+          // Le premier thermes était select et donc le troisième est from et on passe au suivant
+          case 2 :
+          selectTest = 3;
+          break;
+          // Le premier thermes était select et on prend le therme après from qui correspond à la table dans laquel on veut chercher ces informations
+          case 3 :
+          // Si la table demander était complete alors on utilise la class identite et on lui passe le nom de la table rentrer par l'utilisateur 
+          if (colonnes.equals("*"))
+          {
+            new Print(new Identite(bd.get(valeurIt))).execute();
+          }
+          // sinon on lui passe la table et les champs qu'il souhaite voire
+          else
+          {
+            _Schema sche = new Schema(new Attribut(colonnes, bd.get(valeurIt).schema().getTypeAttribut(colonnes)));
+            new Print(new Projection(bd.get(valeurIt), sche)).execute();
+          }
+          break;
+          // Le premier therme était un insert alors le deuxième est la table où il souhaite inserer
+          case 10 :
+          table = valeurIt;
+          selectTest = 20;
+          // Le premier therme était insert donc le troisième doit être values
+          case 20 :
+          selectTest = 30;
+          break;
+          // Le premier therme était insert et donc on peut récupérer ce que l'utilisateur souhaite entrer dans la table
+          case 30 :
+          bd.get(table).add(new Tuple(valeurIt));
+          break;
         }
-        System.out.println();
-        System.out.println("syntaxe correcte !");
       }
-      catch (Exception e)
-      {
-        e.printStackTrace();
-      }
+      System.out.println();
+      System.out.println("syntaxe correcte !");
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
+    }
   }
 
+//Permet de regrouper tout les types de requete différent
   static final public List < String > REQUETE() throws ParseException {
   List < String > ls;
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
@@ -118,6 +142,7 @@ public class MonAnalyseur implements MonAnalyseurConstants {
     throw new Error("Missing return statement in function");
   }
 
+//Permet d'ajouter UN tuple dans une table
   static final public List < String > REQUETEINS() throws ParseException {
   Token t1;
   Token t2;
@@ -136,6 +161,7 @@ public class MonAnalyseur implements MonAnalyseurConstants {
     throw new Error("Missing return statement in function");
   }
 
+//Requete de selection simple a base d'un select et d'un from
   static final public List < String > REQUETESELSIMPLE() throws ParseException {
   Token t1;
   Token t2;
@@ -154,11 +180,33 @@ public class MonAnalyseur implements MonAnalyseurConstants {
     throw new Error("Missing return statement in function");
   }
 
+//Requete de selection a base d'un select d'un from et d'un where
+  static final public List < String > REQUETESELWHERE() throws ParseException {
+  Token t1;
+  Token t2;
+  Token t3;
+  Token t4;
+  Token t5;
+    t1 = jj_consume_token(SELECT);
+    t2 = jj_consume_token(IDF);
+    t3 = jj_consume_token(FROM);
+    t4 = jj_consume_token(IDF);
+    t5 = jj_consume_token(WHERE);
+    List < String > s = new ArrayList < String > ();
+    s.add(t1.image);
+    s.add(t2.image);
+    s.add(t3.image);
+    s.add(t4.image);
+    s.add(t5.image);
+    {if (true) return s;}
+    throw new Error("Missing return statement in function");
+  }
+
   static final public String INSERTVALUE() throws ParseException {
   Token t;
-    jj_consume_token(18);
+    jj_consume_token(OUVPAR);
     t = jj_consume_token(IDF);
-    jj_consume_token(19);
+    jj_consume_token(FERPAR);
     {if (true) return t.image;}
     throw new Error("Missing return statement in function");
   }
@@ -177,19 +225,6 @@ public class MonAnalyseur implements MonAnalyseurConstants {
       jj_consume_token(20);
       INSERTVALUE();
     }
-  }
-
-  static final public List < String > SCHEMA() throws ParseException {
-  Token t;
-    t = jj_consume_token(IDF);
-    List < String > s = new ArrayList < String > ();
-    s.add(t.image);
-    {if (true) return s;}
-    throw new Error("Missing return statement in function");
-  }
-
-  static final public void TABLE() throws ParseException {
-    jj_consume_token(IDF);
   }
 
   static private boolean jj_initialized_once = false;
