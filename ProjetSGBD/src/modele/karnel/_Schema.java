@@ -18,5 +18,4 @@ public interface _Schema {
 	public byte[] serialisation(Tuple interfaceTuple);
 	public _Schema sousSchema(String[] strTab);
 	public long sizeTuple();
-	public Iterator<Attribut> iterator();
 }

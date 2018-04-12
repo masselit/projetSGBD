@@ -104,10 +104,5 @@ public class Schema implements _Schema{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	public Iterator<Attribut> iterator() {
-		return Arrays.asList(attributs).iterator();
-	}
-	
 	
 }

@@ -109,6 +109,11 @@ public class Tuple implements Iterable<Object>{
 		};
 	}
 
+	/**
+	 * Renvoie une des valeurs du tuples à la position données
+	 * @param selon le int 
+	 * @return object
+	 */
 	public Object get(int i) {
 		return valeurs[i];
 	}

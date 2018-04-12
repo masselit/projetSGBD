@@ -46,6 +46,14 @@ public class Test {
 				new Attribut("C1", IntegerSGBD.TYPE)
 				);		
 		new Print(new Projection(bd.get("RELATION"), schema2)).execute();
+		
+		System.out.println("\n -- PROJECTION C1 || Avec des String 1 :");
+		
+		new Print(new Projection(bd.get("RELATION"), "C1")).execute();
+		
+		System.out.println("\n -- PROJECTION C1 || Avec des String 2 :");
+		
+		new Print(new Projection(bd.get("RELATION"), "C1","C2")).execute();
 	}
 
 }
